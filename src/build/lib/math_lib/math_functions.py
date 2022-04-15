@@ -1,3 +1,5 @@
+from math import log
+
 def plus(a: float, b: float) -> float:
     return(a + b)
 
@@ -8,17 +10,25 @@ def multiply(a: float, b: float) -> float:
     return(a * b)
 
 def divide(a: float, b: float) -> float:
-    return(a / b)
+    return round((a / b),10)
 
+def factorial(a: int):
+    if a < 0:
+        raise Exception("Factorial is undefined for negative and floating numbers") 
+    res = 1
+    for i in range(1,a+1):
+        res = res*i
+    return res
 
-def factorial(a: float) -> float:
-    return(a)
+def power(a: float, exponent):
+    if isinstance(exponent,float):
+        raise Exception("Only natural number exponents are allowed")
+    if exponent < 0:
+        raise Exception("Only natural number exponents are allowed") 
+    return(a**exponent)
 
-def power(a: float, exponent: int) -> float:
-    return(a)
+def root(a: float, root: int) -> float:
+    return round((a**(1/root)),10)
 
-def square(a: float, root: int) -> float:
-    return(a)
-
-def nieco_random_co_si_vymyslime_uwu(a: float) -> float:
-    return(a)
+def naturallog(a: float) -> float:
+    return round(log(a),10)
