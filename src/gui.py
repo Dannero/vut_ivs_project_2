@@ -3,63 +3,75 @@ from math_lib import math_functions
 from tkinter import *
 gui = Tk()
 expression=""
-expression_char=""
+expression_eval=""
 
 def display_clear(): 
     global expression
-    global expression_char
+    global expression_eval
     expression = ""
-    expression_char = ""
+    expression_eval = ""
     calculator_text.set("")
 
 def display_remove():
     global expression
     global expression_char
     expression = expression[:-1]
-    expression_char = expression_char[:-1]
+    expression_eval = expression_eval[:-1]
     calculator_text.set(expression)
 
 def display_text(item):
     global expression
-    global expression_char
+    global expression_eval
     item = str(item)
     expression = expression + item
-    expression_char = expression_char + item[0]
-    print(expression_char)
-    print(expression)
+    expression_eval = expression_eval + item[0]
     calculator_text.set(expression)
 
 
 #evaluates string from display
 def evaluate():
-        global expression
+        global expression_eval
         character_array = []
         number = ""
 
         #parses expression into array
-        for character in range(len(expression)):
+        for character in range(len(expression_eval)):
             #checks if character is a number or .
-            if (ord(expression[character]) >= 48 and ord(expression[character]) <= 57) or ord(expression[character]) == ord('.'):
-                number = number + expression[character]
-                #evaluates last number at the end of the expresion
-                if (character == (len(expression)-1)):
+            if (ord(expression_eval[character]) >= 48 and ord(expression_eval[character]) <= 57) or ord(expression_eval[character]) == ord('.'):
+                number = number + expression_eval[character]
+                #evaluates last number at the end of the expression
+                if (character == (len(expression_eval)-1)):
                     number = float(number)
                     character_array.append(number)
                     number=""
             #when character is not a number
-            elif ((ord(expression[character]) <= 48 or ord(expression[character]) >= 57) and ord(expression[character]) != ord('.')):
+            elif ((ord(expression_eval[character]) <= 48 or ord(expression_eval[character]) >= 57) and ord(expression_eval[character]) != ord('.')):
                 if number != "":
                     #evaluates and appends number to array
                     number = float(number)
                     #appends operand to array
                     character_array.append(number)
-                    character_array.append(expression[character])
+                    character_array.append(expression_eval[character])
                     number=""
                 else:
-                    character_array.append(expression[character])
+                    character_array.append(expression_eval[character])
             
 
-            
+        """
+        TO DO <xblask05>
+        function to calculate the expression
+        1. for loop going through expression array
+            -searching for operators with higher precedence (*,/,log,sqrt,^,!)
+            -evaluating said expressions 
+            -replacing expression with result and deleting the rest of operator arguments
+        
+        2. for loop for basic operations
+            -after all prioritised operations are done, another for loop will be used to evaluate
+             the result of the expression now contaning only the basic operations (+,-)
+
+        """
+
+
         #calculates result
         result = character_array[0]
 
