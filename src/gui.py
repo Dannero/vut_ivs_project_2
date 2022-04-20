@@ -3,20 +3,30 @@ from math_lib import math_functions
 from tkinter import *
 gui = Tk()
 expression=""
+expression_char=""
 
 def display_clear(): 
     global expression
+    global expression_char
     expression = ""
+    expression_char = ""
     calculator_text.set("")
 
 def display_remove():
     global expression
+    global expression_char
     expression = expression[:-1]
+    expression_char = expression_char[:-1]
     calculator_text.set(expression)
 
 def display_text(item):
     global expression
-    expression = expression + str(item)
+    global expression_char
+    item = str(item)
+    expression = expression + item
+    expression_char = expression_char + item[0]
+    print(expression_char)
+    print(expression)
     calculator_text.set(expression)
 
 
@@ -81,9 +91,9 @@ def key(event):
     if (event.keysym == "l"):
         display_text("log(")
     elif (event.keysym == "p"):
-        display_text("²")
+        display_text("^")
     elif (event.keysym == "s"):
-        display_text("√")
+        display_text("sqrt(")
 
     elif event.keysym == 'f':
          display_text("!")
@@ -127,14 +137,14 @@ buttons_frame = Frame(gui, width=312, height=272.5, bg="#1A1D23")
 
 
 #first row
-log = Button(buttons_frame, text = "log()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("log"))
+log = Button(buttons_frame, text = "log()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("log("))
 log.grid(row = 0, column = 0, padx = 1, pady = 1)
 
-square = Button(buttons_frame, text = "x²", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("²"))
+square = Button(buttons_frame, text = "x^", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("^"))
 square.grid(row = 0, column = 2, padx = 1, pady = 1)
 
-power = Button(buttons_frame, text = "√x", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("√"))
-power.grid(row = 0, column = 1, padx = 1, pady = 1)
+sqrt = Button(buttons_frame, text = "sqrt()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("sqrt("))
+sqrt.grid(row = 0, column = 1, padx = 1, pady = 1)
 
 factorial = Button(buttons_frame, text = "x!", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("!"))
 factorial.grid(row = 0, column = 3, padx = 1, pady = 1)

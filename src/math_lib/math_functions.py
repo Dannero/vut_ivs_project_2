@@ -10,6 +10,8 @@ def multiply(a: float, b: float) -> float:
     return(a * b)
 
 def divide(a: float, b: float) -> float:
+    if b == 0:
+        raise Exception("Undefined operation: Division by zero")
     return round((a / b),10)
 
 def factorial(a: int):
