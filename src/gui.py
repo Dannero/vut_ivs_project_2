@@ -17,7 +17,6 @@ def display_remove():
 def display_text(item):
     global expression
     expression = expression + str(item)
-    print(expression)
     calculator_text.set(expression)
 
 
