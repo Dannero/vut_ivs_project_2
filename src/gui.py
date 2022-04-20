@@ -85,19 +85,23 @@ def key(event):
         display_text("²")
     elif (event.keysym == "s"):
         display_text("√")
+
+    elif event.keysym == 'f':
+         display_text("!")
     
     elif event.keysym == "minus" or event.keysym == "plus" or event.keysym == "slash" or event.keysym == "asterisk"   or event.keysym == "parenleft" or event.keysym == "parenright" or event.keysym == "period":
         display_text(str(event.char))
 
     elif event.keysym == "Return":
         evaluate()
-        print("eval")
 
     elif event.keysym == "BackSpace":
         display_remove()
 
     elif event.keysym == 'c':
         display_clear()
+
+
 
 gui.configure(bg="#1A1D23")
 gui.geometry("312x413")  
@@ -120,33 +124,35 @@ display.pack(ipady=30)
 
 buttons_frame = Frame(gui, width=312, height=272.5, bg="#1A1D23")
 
+
+
+
 #first row
-parenLeft = Button(buttons_frame, text = "(", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("("))
-parenLeft.grid(row = 0, column = 0, padx = 1, pady = 1)
-
-parenRight = Button(buttons_frame, text = ")", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text(")"))
-parenRight.grid(row = 0, column = 1, padx = 1, pady = 1)
-
-clear = Button(buttons_frame, text = "CE", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_clear())
-clear.grid(row = 0, column = 2, padx = 1, pady = 1)
-
-remove = Button(buttons_frame, text = "<=|", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_remove())
-remove.grid(row = 0, column = 3, padx = 1, pady = 1)
-
-
-
-#second row
 log = Button(buttons_frame, text = "log()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("log"))
-log.grid(row = 1, column = 0, padx = 1, pady = 1)
+log.grid(row = 0, column = 0, padx = 1, pady = 1)
 
 square = Button(buttons_frame, text = "x²", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("²"))
-square.grid(row = 1, column = 2, padx = 1, pady = 1)
+square.grid(row = 0, column = 2, padx = 1, pady = 1)
 
 power = Button(buttons_frame, text = "√x", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("√"))
-power.grid(row = 1, column = 1, padx = 1, pady = 1)
+power.grid(row = 0, column = 1, padx = 1, pady = 1)
+
+factorial = Button(buttons_frame, text = "x!", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("!"))
+factorial.grid(row = 0, column = 3, padx = 1, pady = 1)
+
+#second row
+parenLeft = Button(buttons_frame, text = "(", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("("))
+parenLeft.grid(row = 1, column = 0, padx = 1, pady = 1)
+
+parenRight = Button(buttons_frame, text = ")", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text(")"))
+parenRight.grid(row = 1, column = 1, padx = 1, pady = 1)
+
+clear = Button(buttons_frame, text = "CE", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_clear())
+clear.grid(row = 1, column = 2, padx = 1, pady = 1)
 
 divide = Button(buttons_frame, text = "/", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("/"))
 divide.grid(row = 1, column = 3, padx = 1, pady = 1)
+
 
 
 
