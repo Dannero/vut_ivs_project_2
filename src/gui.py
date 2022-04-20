@@ -76,7 +76,6 @@ def evaluate():
     
 #reads keyboard input  
 def key(event):
-    print(event.keysym)
     for k in range (10):
         if (event.char == str(k)):
             display_text(str(event.char))
@@ -87,7 +86,7 @@ def key(event):
     elif (event.keysym == "s"):
         display_text("√")
     
-    elif event.keysym == "minus" or event.keysym == "plus" or event.keysym == "slash" or event.keysym == "asterisk" or event.char =="c" or event.char == "l" or event.char == "s" or event.char == "p" or event.keysym == "parenleft" or event.keysym == "parenright" or event.keysym == "period":
+    elif event.keysym == "minus" or event.keysym == "plus" or event.keysym == "slash" or event.keysym == "asterisk"   or event.keysym == "parenleft" or event.keysym == "parenright" or event.keysym == "period":
         display_text(str(event.char))
 
     elif event.keysym == "Return":
@@ -96,6 +95,9 @@ def key(event):
 
     elif event.keysym == "BackSpace":
         display_remove()
+
+    elif event.keysym == 'c':
+        display_clear()
 
 gui.configure(bg="#1A1D23")
 gui.geometry("312x413")  
