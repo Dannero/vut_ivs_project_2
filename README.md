@@ -1,19 +1,18 @@
-Prostredi
+Platform
 ---------
 
-Ubuntu 64bit
 Windows 64bit
 
-Autori
+Authors
 ------
 
-Nazev tymu
-- xlogin01 jmeno prijmeni 
-- xlogin02 jmeno prijmeni 
-- xlogin03 jmeno prijmeni 
-- xlogin04 jmeno prijmeni 
+xsirov01_ivs
+- xsirov01 Lucia Šírová 
+- xhrici01 Stanislav Hricík 
+- xbrand13 David Brandšteter
+- xblask05 Daniel Blaško 
 
-Licence
+License
 -------
 
-Tento program je poskytovan...
+This program is distributed under [GNU General Public License v3.0](LICENSE).
