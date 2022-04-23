@@ -15,7 +15,7 @@ def display_clear():
 
 def display_remove():
     global expression
-    global expression_char
+    global expression_eval
     expression = expression[:-1]
     expression_eval = expression_eval[:-1]
     calculator_text.set(expression)
@@ -27,6 +27,8 @@ def display_text(item):
     expression = expression + item
     expression_eval = expression_eval + item[0]
     calculator_text.set(expression)
+
+
 
 
 #evaluates string from display
@@ -43,6 +45,8 @@ def evaluate():
                 #evaluates last number at the end of the expression
                 if (character == (len(expression_eval)-1)):
                     number = float(number)
+                    if (number.is_integer()):
+                        number = int(number)
                     character_array.append(number)
                     number=""
             #when character is not a number
@@ -50,6 +54,8 @@ def evaluate():
                 if number != "":
                     #evaluates and appends number to array
                     number = float(number)
+                    if (number.is_integer()):
+                        number = int(number)
                     #appends operand to array
                     character_array.append(number)
                     character_array.append(expression_eval[character])
@@ -58,19 +64,46 @@ def evaluate():
                     character_array.append(expression_eval[character])
             
 
-        """
-        TO DO <xblask05>
-        function to calculate the expression
-        1. for loop going through expression array
-            -searching for operators with higher precedence (*,/,log,sqrt,^,!)
-            -evaluating said expressions 
-            -replacing expression with result and deleting the rest of operator arguments
-        
-        2. for loop for basic operations
-            -after all prioritised operations are done, another for loop will be used to evaluate
-             the result of the expression now contaning only the basic operations (+,-)
+        #Operator precedence function
 
-        """
+        #Evaluates operations with higher operator precedence and replaces them with their results
+        #Removes the rest of the operations and operands from expression
+        i = 0
+        while i < len(character_array):
+
+            if (character_array[i] == "*"):
+                character_array[i-1] = math_functions.multiply(character_array[i-1], character_array[i+1])
+                del character_array[i+1]
+                del character_array[i]
+
+            elif (character_array[i] == "/"):
+                character_array[i-1] = math_functions.divide(character_array[i-1], character_array[i+1])
+                del character_array[i+1]
+                del character_array[i]
+
+            elif (character_array[i] == "^"):
+                character_array[i-1] = math_functions.power(character_array[i-1], character_array[i+1])
+                #print(character_array[i+1])
+                del character_array[i+1]
+                del character_array[i]
+
+            elif (character_array[i] == "r"):
+                character_array[i-1] = math_functions.root(character_array[i-1], character_array[i+1])
+                del character_array[i+1]
+                del character_array[i]
+
+            elif (character_array[i] == "l"):
+                #if character_array[i+2] != ")":
+                    #todo syntax error
+                character_array[i] = math_functions.naturallog(character_array[i+1])
+                del character_array[i+2]
+                del character_array[i+1]
+
+            elif (character_array[i] == "!"):
+                character_array[i-1] = math_functions.factorial(character_array[i-1])
+                del character_array[i]
+
+            else: i+=1
 
 
         #calculates result
@@ -86,12 +119,8 @@ def evaluate():
                 result = math_functions.plus(result,operand)
             elif (operator == "-"):
                 result = math_functions.minus(result,operand)
-            elif (operator == "/"):
-                result = math_functions.divide(result,operand)
-            if (operator == "*"):
-                result = math_functions.multiply(result,operand)
 
-        #displays result
+        #checks result type and displays result
         result = str(result)
         calculator_text.set(result)
         
@@ -106,7 +135,7 @@ def key(event):
     elif (event.keysym == "p"):
         display_text("^")
     elif (event.keysym == "s"):
-        display_text("sqrt(")
+        display_text("root")
 
     elif event.keysym == 'f':
          display_text("!")
@@ -154,13 +183,13 @@ log = Button(buttons_frame, text = "log()", fg = "white", width = 10, height = 3
 log.grid(row = 0, column = 0, padx = 1, pady = 1)
 log_tip = Hovertip(log,'This button enters a natural logarithm function, fill and close the parenthesis with a number to get its natural logarithm')
 
-square = Button(buttons_frame, text = "x^", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("^"))
-square.grid(row = 0, column = 2, padx = 1, pady = 1)
-square_tip = Hovertip(square,'This button enters an exponentiation sign, use this to create an exponentiation expression')
+power = Button(buttons_frame, text = "x^", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("^"))
+power.grid(row = 0, column = 2, padx = 1, pady = 1)
+power_tip = Hovertip(power,'This button enters an exponentiation sign, use this to create an exponentiation expression')
 
-sqrt = Button(buttons_frame, text = "sqrt()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("sqrt("))
-sqrt.grid(row = 0, column = 1, padx = 1, pady = 1)
-sqrt = Hovertip(sqrt,'This button enters a square root function, fill and close the parenthesis with a number to get its square root')
+root = Button(buttons_frame, text = "root", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("root"))
+root.grid(row = 0, column = 1, padx = 1, pady = 1)
+root = Hovertip(root,'This button enters a root function, enter this after a number and complete with index to get n-th root of a number')
 
 factorial = Button(buttons_frame, text = "x!", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("!"))
 factorial.grid(row = 0, column = 3, padx = 1, pady = 1)
