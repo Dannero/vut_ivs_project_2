@@ -1,6 +1,7 @@
 
 from math_lib import math_functions 
 from tkinter import *
+from idlelib.tooltip import Hovertip
 gui = Tk()
 expression=""
 expression_eval=""
@@ -151,28 +152,36 @@ buttons_frame = Frame(gui, width=312, height=272.5, bg="#1A1D23")
 #first row
 log = Button(buttons_frame, text = "log()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("log("))
 log.grid(row = 0, column = 0, padx = 1, pady = 1)
+log_tip = Hovertip(log,'This button enters a natural logarithm function, fill and close the parenthesis with a number to get its natural logarithm')
 
 square = Button(buttons_frame, text = "x^", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("^"))
 square.grid(row = 0, column = 2, padx = 1, pady = 1)
+square_tip = Hovertip(square,'This button enters an exponentiation sign, use this to create an exponentiation expression')
 
 sqrt = Button(buttons_frame, text = "sqrt()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("sqrt("))
 sqrt.grid(row = 0, column = 1, padx = 1, pady = 1)
+sqrt = Hovertip(sqrt,'This button enters a square root function, fill and close the parenthesis with a number to get its square root')
 
 factorial = Button(buttons_frame, text = "x!", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("!"))
 factorial.grid(row = 0, column = 3, padx = 1, pady = 1)
+factorial_tip = Hovertip(factorial,'This button enters a factorial sign, enter this after a number to get its factorial')
 
 #second row
 parenLeft = Button(buttons_frame, text = "(", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("("))
 parenLeft.grid(row = 1, column = 0, padx = 1, pady = 1)
+parenLeft_tip = Hovertip(parenLeft,'This button enters an opening parenthesis, use this with a closing parenthesis to create a sub-expression')
 
 parenRight = Button(buttons_frame, text = ")", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text(")"))
 parenRight.grid(row = 1, column = 1, padx = 1, pady = 1)
+parenRight_tip = Hovertip(parenRight,'This button enters a closing parenthesis, use this with an opening parenthesis to create a sub-expression')
 
 clear = Button(buttons_frame, text = "CE", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_clear())
 clear.grid(row = 1, column = 2, padx = 1, pady = 1)
+clear_tip = Hovertip(clear,'This button clears all entered expressions')
 
 divide = Button(buttons_frame, text = "/", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("/"))
 divide.grid(row = 1, column = 3, padx = 1, pady = 1)
+divide_tip = Hovertip(divide,'This button enters a division sign, use this to create a division expression')
 
 
 
@@ -180,45 +189,57 @@ divide.grid(row = 1, column = 3, padx = 1, pady = 1)
 #third row
 seven = Button(buttons_frame, text = "7", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(7))
 seven.grid(row = 2, column = 0, padx = 1, pady = 1)
+seven_tip = Hovertip(seven,'This button enters the digit 7, use this in combination with other digits to create numbers')
 
 eight = Button(buttons_frame, text = "8", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(8))
 eight.grid(row = 2, column =1 , padx = 1, pady = 1)
+eight = Hovertip(eight,'This button enters the digit 8, use this in combination with other digits to create numbers')
 
 nine = Button(buttons_frame, text = "9", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2",  command= lambda: display_text(9))
 nine.grid(row = 2, column = 2, padx = 1, pady = 1) 
+nine_tip = Hovertip(nine,'This button enters the digit 9, use this in combination with other digits to create numbers')
 
 multiply = Button(buttons_frame, text = "*", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("*"))
 multiply.grid(row = 2, column = 3, padx = 1, pady = 1)
+multiply_tip = Hovertip(multiply,'This button enters a multiplication sign, use this to create a multiplication expression')
 
 
 
 #fourth row
 four = Button(buttons_frame, text = "4", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(4))
 four.grid(row = 3, column = 0, padx = 1, pady = 1)
+four = Hovertip(four,'This button enters the digit 4, use this in combination with other digits to create numbers')
 
 five = Button(buttons_frame, text = "5", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(5))
 five.grid(row = 3, column = 1, padx = 1, pady = 1)
+five_tip = Hovertip(five,'This button enters the digit 5, use this in combination with other digits to create numbers')
 
 six = Button(buttons_frame, text = "6", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2",  command= lambda: display_text(6))
 six.grid(row = 3, column = 2, padx = 1, pady = 1)
+six = Hovertip(six,'This button enters the digit 6, use this in combination with other digits to create numbers')
 
 minus = Button(buttons_frame, text = "-", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("-"))
 minus.grid(row = 3, column = 3, padx = 1, pady = 1)
+minus_tip = Hovertip(minus,'This button enters a minus sign, use this to create a subtraction expression')
 
 
 
 #fifth row
 one = Button(buttons_frame, text = "1", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(1))
 one.grid(row = 4, column = 0, padx = 1, pady = 1)
+one_tip = Hovertip(one,'This button enters the digit 1, use this in combination with other digits to create numbers')
 
 two = Button(buttons_frame, text = "2", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(2))
 two.grid(row = 4, column = 1, padx = 1, pady = 1)
+two_tip = Hovertip(two,'This button enters the digit 2, use this in combination with other digits to create numbers')
 
 three = Button(buttons_frame, text = "3", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command = lambda: display_text(3))
 three.grid(row = 4, column= 2, padx = 1 , pady=1 ) 
+three_tip = Hovertip(three,'This button enters the digit 3, use this in combination with other digits to create numbers')
 
 plus = Button(buttons_frame, text = "+", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command = lambda: display_text("+"))
 plus.grid(row = 4, column= 3, padx = 1 , pady=1 )
+plus_tip = Hovertip(plus,'This button enters a plus sign, use this to create an addition expression')
 
 
 
@@ -228,12 +249,15 @@ shift.grid(row = 5, column = 0, padx = 1, pady = 1)
 
 zero = Button(buttons_frame, text = "0", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2",  command= lambda: display_text(0))
 zero.grid(row = 5, column = 1, padx = 1, pady = 1)
+zero_tip = Hovertip(zero,'This button enters the digit 0, use this in combination with other digits to create numbers')
 
 point = Button(buttons_frame, text = ".", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2",  command= lambda: display_text("."))
 point.grid(row = 5, column = 2, padx = 1, pady = 1) 
+point_tip = Hovertip(point,'This button enters a floating point, use this in combination with digits to create floating point numbers')
 
 equals = Button(buttons_frame, text = "=", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: evaluate())
 equals.grid(row = 5, column = 3, padx = 1, pady = 1)
+equals_tip = Hovertip(equals,'This button evaluates your expression')
 
 
 buttons_frame.pack()
