@@ -12,7 +12,7 @@ pack:
 	mv ../doc ../../xsirov01_xbrand13_xhrici01_xblask05/
 	cp -a ../. ../../xsirov01_xbrand13_xhrici01_xblask05/repo
 	cd ../../ && zip -r xsirov01_xbrand13_xhrici01_xblask05.zip xsirov01_xbrand13_xhrici01_xblask05
-	
+
 clean:
 	rm -rf ../doc
 	rm -rf ../../xsirov01_xbrand13_xhrici01_xblask05
@@ -28,4 +28,4 @@ run: gui.py
 	python3 gui.py 
 
 profile:
-	python3 stddev.py
+	python3 profiling.py
