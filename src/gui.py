@@ -131,7 +131,7 @@ def key(event):
         if (event.char == str(k)):
             display_text(str(event.char))
     if (event.keysym == "l"):
-        display_text("log(")
+        display_text("ln(")
     elif (event.keysym == "p"):
         display_text("^")
     elif (event.keysym == "s"):
@@ -179,7 +179,7 @@ buttons_frame = Frame(gui, width=312, height=272.5, bg="#1A1D23")
 
 
 #first row
-log = Button(buttons_frame, text = "log()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("log("))
+log = Button(buttons_frame, text = "ln()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("ln("))
 log.grid(row = 0, column = 0, padx = 1, pady = 1)
 log_tip = Hovertip(log,'This button enters a natural logarithm function, fill and close the parenthesis with a number to get its natural logarithm')
 
