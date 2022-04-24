@@ -83,7 +83,6 @@ def evaluate():
 
             elif (character_array[i] == "^"):
                 character_array[i-1] = math_functions.power(character_array[i-1], character_array[i+1])
-                #print(character_array[i+1])
                 del character_array[i+1]
                 del character_array[i]
 
@@ -120,7 +119,7 @@ def evaluate():
             elif (operator == "-"):
                 result = math_functions.minus(result,operand)
 
-        #checks result type and displays result
+        #displays result
         result = str(result)
         calculator_text.set(result)
         
