@@ -71,23 +71,13 @@ def evaluate():
             
 
         #Operator precedence function
-
         #Evaluates operations with higher operator precedence and replaces them with their results
         #Removes the rest of the operations and operands from expression
-        i = 0
+
+        #Operations with highest precedence (power, root, factorial, natural log)
+        i=0 
         while i < len(character_array):
-
-            if (character_array[i] == "*"):
-                character_array[i-1] = math_functions.multiply(character_array[i-1], character_array[i+1])
-                del character_array[i+1]
-                del character_array[i]
-
-            elif (character_array[i] == "/"):
-                character_array[i-1] = math_functions.divide(character_array[i-1], character_array[i+1])
-                del character_array[i+1]
-                del character_array[i]
-
-            elif (character_array[i] == "^"):
+            if (character_array[i] == "^"):
                 character_array[i-1] = math_functions.power(character_array[i-1], character_array[i+1])
                 del character_array[i+1]
                 del character_array[i]
@@ -113,10 +103,25 @@ def evaluate():
             elif (character_array[i] == "!"):
                 character_array[i-1] = math_functions.factorial(character_array[i-1])
                 del character_array[i]
+            else: i+=1
 
+        #Operations with mid precedence (multiply, divide)
+        i = 0
+        while i < len(character_array):
+            if (character_array[i] == "*"):
+                character_array[i-1] = math_functions.multiply(character_array[i-1], character_array[i+1])
+                del character_array[i+1]
+                del character_array[i]
+
+            elif (character_array[i] == "/"):
+                character_array[i-1] = math_functions.divide(character_array[i-1], character_array[i+1])
+                del character_array[i+1]
+                del character_array[i]
             else: i+=1
 
 
+
+        #Basic mathematic functions (plus, minus)
         #calculates result
         result = character_array[0]
 
@@ -196,7 +201,7 @@ buttons_frame = Frame(gui, width=312, height=272.5, bg="#1A1D23")
 
 
 #first row
-log = Button(buttons_frame, text = "ln()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("ln("))
+log = Button(buttons_frame, text = "ln()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("ln"))
 log.grid(row = 0, column = 0, padx = 1, pady = 1)
 log_tip = Hovertip(log,'This button enters a natural logarithm function, fill and close the parenthesis with a number to get its natural logarithm')
 
