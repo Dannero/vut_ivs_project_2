@@ -34,6 +34,7 @@ def display_text(item):
 #evaluates string from display
 def evaluate():
         global expression_eval
+        global expression
         character_array = []
         number = ""
 
@@ -133,6 +134,12 @@ def evaluate():
         #displays result
         result = str(result)
         calculator_text.set(result)
+        expression_eval=""
+        character_array = []
+        number = ""
+        expression =""
+        result=0
+
         
     
 #reads keyboard input  
@@ -214,9 +221,9 @@ parenRight = Button(buttons_frame, text = ")", fg = "white", width = 10, height 
 parenRight.grid(row = 1, column = 1, padx = 1, pady = 1)
 parenRight_tip = Hovertip(parenRight,'This button enters a closing parenthesis, use this with an opening parenthesis to create a sub-expression or a negative number')
 
-clear = Button(buttons_frame, text = "CE", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_clear())
-clear.grid(row = 1, column = 2, padx = 1, pady = 1)
-clear_tip = Hovertip(clear,'This button clears all entered expressions')
+delete = Button(buttons_frame, text = "⇐", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_remove())
+delete.grid(row = 1, column = 2, padx = 1, pady = 1)
+delete_tip = Hovertip(delete,'This button deletes last entered expression')
 
 divide = Button(buttons_frame, text = "/", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("/"))
 divide.grid(row = 1, column = 3, padx = 1, pady = 1)
@@ -283,8 +290,9 @@ plus_tip = Hovertip(plus,'This button enters a plus sign, use this to create an 
 
 
 #sixth row
-shift = Button(buttons_frame, text = "shift", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: evaluate())
-shift.grid(row = 5, column = 0, padx = 1, pady = 1)
+clear = Button(buttons_frame, text = "CE", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_clear());
+clear.grid(row = 5, column = 0, padx = 1, pady = 1)
+clea_tip = Hovertip(clear,'This button clears all entered expressions' )
 
 zero = Button(buttons_frame, text = "0", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2",  command= lambda: display_text(0))
 zero.grid(row = 5, column = 1, padx = 1, pady = 1)
