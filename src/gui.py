@@ -40,7 +40,8 @@ def evaluate():
         #parses expression into array
         for character in range(len(expression_eval)):
             #checks if character is a number or .
-            if (ord(expression_eval[character]) >= 48 and ord(expression_eval[character]) <= 57) or ord(expression_eval[character]) == ord('.'):
+            #or if first character is - to make nagative number
+            if (ord(expression_eval[character]) >= 48 and ord(expression_eval[character]) <= 57) or ord(expression_eval[character]) == ord('.') or (ord(expression_eval[character]) == ord('-') and character == 0):
                 number = number + expression_eval[character]
                 #evaluates last number at the end of the expression
                 if (character == (len(expression_eval)-1)):
@@ -49,8 +50,11 @@ def evaluate():
                         number = int(number)
                     character_array.append(number)
                     number=""
+            #checks if - is in bracket to make a negative number
+            elif ord(expression_eval[character]) == ord('-') and ord(expression_eval[character-1]) == ord('('):
+                number = number + expression_eval[character]
             #when character is not a number
-            elif ((ord(expression_eval[character]) <= 48 or ord(expression_eval[character]) >= 57) and ord(expression_eval[character]) != ord('.')):
+            elif ((ord(expression_eval[character]) <= 48 or ord(expression_eval[character]) >= 57) and ord(expression_eval[character]) != ord('.') and ord(expression_eval[character]) != ord('(')):
                 if number != "":
                     #evaluates and appends number to array
                     number = float(number)
@@ -58,7 +62,8 @@ def evaluate():
                         number = int(number)
                     #appends operand to array
                     character_array.append(number)
-                    character_array.append(expression_eval[character])
+                    if ord(expression_eval[character]) != ord(')') :
+                        character_array.append(expression_eval[character])
                     number=""
                 else:
                     character_array.append(expression_eval[character])
@@ -95,8 +100,14 @@ def evaluate():
                 #if character_array[i+2] != ")":
                     #todo syntax error
                 character_array[i] = math_functions.naturallog(character_array[i+1])
-                del character_array[i+2]
+                #del character_array[i+2]
                 del character_array[i+1]
+            #elif (character_array[i] == "("):
+                #if character_array[i+2] != ")":
+                    #todo syntax error
+             #   if(character_array[i+1]=="-"):
+              #      character_array[i] = character_array[i] + character_array[i+1]
+               #     del character_array[i+1]
 
             elif (character_array[i] == "!"):
                 character_array[i-1] = math_functions.factorial(character_array[i-1])
@@ -197,11 +208,11 @@ factorial_tip = Hovertip(factorial,'This button enters a factorial sign, enter t
 #second row
 parenLeft = Button(buttons_frame, text = "(", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("("))
 parenLeft.grid(row = 1, column = 0, padx = 1, pady = 1)
-parenLeft_tip = Hovertip(parenLeft,'This button enters an opening parenthesis, use this with a closing parenthesis to create a sub-expression')
+parenLeft_tip = Hovertip(parenLeft,'This button enters an opening parenthesis, use this with a closing parenthesis to create a sub-expression or a negative number')
 
 parenRight = Button(buttons_frame, text = ")", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text(")"))
 parenRight.grid(row = 1, column = 1, padx = 1, pady = 1)
-parenRight_tip = Hovertip(parenRight,'This button enters a closing parenthesis, use this with an opening parenthesis to create a sub-expression')
+parenRight_tip = Hovertip(parenRight,'This button enters a closing parenthesis, use this with an opening parenthesis to create a sub-expression or a negative number')
 
 clear = Button(buttons_frame, text = "CE", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_clear())
 clear.grid(row = 1, column = 2, padx = 1, pady = 1)
