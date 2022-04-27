@@ -45,11 +45,12 @@ def divide(a: float, b: float) -> float:
 # @return Factorial of a
 def factorial(a: int):
     if a < 0:
-        raise Exception("Factorial is undefined for negative and floating numbers") 
-    res = 1
-    for i in range(1,a+1):
-        res = res*i
-    return res
+        raise Exception("Factorial is undefined for negative numbers")
+    else:
+        res = 1
+        for i in range(1,a+1):
+            res = res*i
+        return res
 
 ##
 # @brief Exponentation

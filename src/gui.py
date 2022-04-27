@@ -76,23 +76,34 @@ def evaluate():
 
         #Operations with highest precedence (power, root, factorial, natural log)
         i=0 
+        result = ""
         while i < len(character_array):
             if (character_array[i] == "^"):
-                character_array[i-1] = math_functions.power(character_array[i-1], character_array[i+1])
+                try:
+                    character_array[i-1] = math_functions.power(character_array[i-1], character_array[i+1])
+                except Exception as e:
+                    result = e
                 del character_array[i+1]
                 del character_array[i]
 
             elif (character_array[i] == "r"):
-                character_array[i-1] = math_functions.root(character_array[i-1], character_array[i+1])
+                try:
+                    character_array[i-1] = math_functions.root(character_array[i-1], character_array[i+1])
+                except Exception:
+                    result = "Complex results aren't supported"
                 del character_array[i+1]
                 del character_array[i]
 
             elif (character_array[i] == "l"):
                 #if character_array[i+2] != ")":
                     #todo syntax error
-                character_array[i] = math_functions.naturallog(character_array[i+1])
+                try:
+                    character_array[i] = math_functions.naturallog(character_array[i+1])
+                    del character_array[i+1]
+                except Exception:
+                    del character_array[i]
+                    result = "ln is undefined for values below or equal 0"
                 #del character_array[i+2]
-                del character_array[i+1]
             #elif (character_array[i] == "("):
                 #if character_array[i+2] != ")":
                     #todo syntax error
@@ -101,7 +112,10 @@ def evaluate():
                #     del character_array[i+1]
 
             elif (character_array[i] == "!"):
-                character_array[i-1] = math_functions.factorial(character_array[i-1])
+                try:
+                    character_array[i-1] = math_functions.factorial(character_array[i-1])
+                except Exception:
+                    result = "Factorial is undefined for negative and floating numbers"
                 del character_array[i]
             else: i+=1
 
@@ -114,7 +128,10 @@ def evaluate():
                 del character_array[i]
 
             elif (character_array[i] == "/"):
-                character_array[i-1] = math_functions.divide(character_array[i-1], character_array[i+1])
+                try:
+                    character_array[i-1] = math_functions.divide(character_array[i-1], character_array[i+1])
+                except Exception:
+                    result = "Division by zero is undefined"
                 del character_array[i+1]
                 del character_array[i]
             else: i+=1
@@ -123,22 +140,25 @@ def evaluate():
 
         #Basic mathematic functions (plus, minus)
         #calculates result
-        result = character_array[0]
+        if result != "":
+            calculator_text.set(result)
+        else:
+            result = character_array[0]
 
-        #iters by 2
-        for character in range(1,len(character_array),2):
-            #creates a pair of operator and operad to use in basic math functions 
-            operator = character_array[character]
-            operand = character_array[character+1]
+            #iters by 2
+            for character in range(1,len(character_array),2):
+                #creates a pair of operator and operad to use in basic math functions 
+                operator = character_array[character]
+                operand = character_array[character+1]
 
-            if (operator == "+"):
-                result = math_functions.plus(result,operand)
-            elif (operator == "-"):
-                result = math_functions.minus(result,operand)
+                if (operator == "+"):
+                    result = math_functions.plus(result,operand)
+                elif (operator == "-"):
+                    result = math_functions.minus(result,operand)
 
         #displays result
-        result = str(result)
-        calculator_text.set(result)
+            result = str(result)
+            calculator_text.set(result)
         expression_eval=""
         character_array = []
         number = ""
