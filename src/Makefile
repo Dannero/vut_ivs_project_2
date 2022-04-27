@@ -1,11 +1,11 @@
 .PHONY: all init pack clean test doc run profile
 
-all: init run	
+all: run	
 	
 init:
 	pip3 install -r requirements.txt
     
-pack:
+pack: doc
 	mkdir -p ../../xsirov01_xbrand13_xhrici01_xblask05
 	mkdir -p ../../xsirov01_xbrand13_xhrici01_xblask05/repo
 	mkdir -p ../../xsirov01_xbrand13_xhrici01_xblask05/installer
@@ -20,12 +20,12 @@ clean:
 test: 
 	python3 setup.py pytest
 
-doc:
+doc: Doxyfile
 	rm -rf ../doc
 	doxygen
 
 run: gui.py
 	python3 gui.py 
 
-profile:
+profile: profiling.py
 	python3 profiling.py
