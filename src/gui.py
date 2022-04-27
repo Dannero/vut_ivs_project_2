@@ -223,7 +223,7 @@ buttons_frame = Frame(gui, width=312, height=272.5, bg="#1A1D23")
 #first row
 log = Button(buttons_frame, text = "ln()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("ln"))
 log.grid(row = 0, column = 0, padx = 1, pady = 1)
-log_tip = Hovertip(log,'This button enters a natural logarithm function, fill and close the parenthesis with a number to get its natural logarithm')
+log_tip = Hovertip(log,'This button enters a natural logarithm function, enter a number after this to get its natural logarithm')
 
 power = Button(buttons_frame, text = "x^", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("^"))
 power.grid(row = 0, column = 2, padx = 1, pady = 1)
@@ -240,11 +240,11 @@ factorial_tip = Hovertip(factorial,'This button enters a factorial sign, enter t
 #second row
 parenLeft = Button(buttons_frame, text = "(", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("("))
 parenLeft.grid(row = 1, column = 0, padx = 1, pady = 1)
-parenLeft_tip = Hovertip(parenLeft,'This button enters an opening parenthesis, use this with a closing parenthesis to create a sub-expression or a negative number')
+parenLeft_tip = Hovertip(parenLeft,'This button enters an opening parenthesis, use this with a closing parenthesis to specify a negative number')
 
 parenRight = Button(buttons_frame, text = ")", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text(")"))
 parenRight.grid(row = 1, column = 1, padx = 1, pady = 1)
-parenRight_tip = Hovertip(parenRight,'This button enters a closing parenthesis, use this with an opening parenthesis to create a sub-expression or a negative number')
+parenRight_tip = Hovertip(parenRight,'This button enters a closing parenthesis, use this with an opening parenthesis to specify a negative number')
 
 delete = Button(buttons_frame, text = "⇐", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_remove())
 delete.grid(row = 1, column = 2, padx = 1, pady = 1)
@@ -291,7 +291,7 @@ six = Hovertip(six,'This button enters the digit 6, use this in combination with
 
 minus = Button(buttons_frame, text = "-", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2",  command= lambda: display_text("-"))
 minus.grid(row = 3, column = 3, padx = 1, pady = 1)
-minus_tip = Hovertip(minus,'This button enters a minus sign, use this to create a subtraction expression')
+minus_tip = Hovertip(minus,'This button enters a minus sign, use this to create a subtraction expression or a negative number inside parenthesis')
 
 
 
