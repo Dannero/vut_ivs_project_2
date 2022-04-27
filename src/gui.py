@@ -1,4 +1,14 @@
+##
+# @mainpage xsirov01_ivs Calculator  
+# @brief GUI of the calculator implementing mathematical functions
+#
+# 
 
+##
+# @file gui.py  
+# @brief GUI of the calculator implementing mathematical functions
+#
+# 
 from math_lib import math_functions 
 from tkinter import *
 from idlelib.tooltip import Hovertip
@@ -6,6 +16,10 @@ gui = Tk()
 expression=""
 expression_eval=""
 
+##
+# @brief Display Clear
+#
+# After clicking the CE button, the whole expression is deleted
 def display_clear(): 
     global expression
     global expression_eval
@@ -13,11 +27,23 @@ def display_clear():
     expression_eval = ""
     calculator_text.set("")
 
+##
+# @brief Display Remove
+# 
+# After pressing the Backspace key or the ⇐ button, a single digit or operation is removed from the expression 
+#
 def display_remove():
     global expression
     global expression_eval
-    expression = expression[:-1]
-    expression_eval = expression_eval[:-1]
+    if expression_eval[-1] == "r":
+        expression = expression[:-4]
+        expression_eval = expression_eval[:-1] 
+    elif expression_eval[-1] == "l":
+        expression = expression[:-2]
+        expression_eval = expression_eval[:-1]   
+    else:             
+        expression = expression[:-1]
+        expression_eval = expression_eval[:-1]
     calculator_text.set(expression)
 
 def display_text(item):
@@ -30,14 +56,17 @@ def display_text(item):
 
 
 
-
-#evaluates string from display
+##
+# @brief Evaluate
+# Evaluates the value of the expression
+#
+#
+#
 def evaluate():
         global expression_eval
         global expression
         character_array = []
         number = ""
-
         #parses expression into array
         for character in range(len(expression_eval)):
             #checks if character is a number or .
@@ -176,7 +205,7 @@ def key(event):
         display_text("ln(")
     elif (event.keysym == "p"):
         display_text("^")
-    elif (event.keysym == "s"):
+    elif (event.keysym == "r"):
         display_text("root")
 
     elif event.keysym == 'f':
@@ -194,7 +223,14 @@ def key(event):
     elif event.keysym == 'c':
         display_clear()
 
-
+##
+# @brief GUI creation
+#
+# @brief User Interface with a display and a 6x4 button section
+#
+# User can input expression by either clicking the buttons on the calculator or using corresponding keys on a keyboard
+# Hints are shown after hovering over a button
+#
 
 gui.configure(bg="#1A1D23")
 gui.geometry("312x413")  
@@ -220,7 +256,7 @@ buttons_frame = Frame(gui, width=312, height=272.5, bg="#1A1D23")
 
 
 
-#first row
+##first row
 log = Button(buttons_frame, text = "ln()", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("ln"))
 log.grid(row = 0, column = 0, padx = 1, pady = 1)
 log_tip = Hovertip(log,'This button enters a natural logarithm function, enter a number after this to get its natural logarithm')
@@ -237,7 +273,7 @@ factorial = Button(buttons_frame, text = "x!", fg = "white", width = 10, height 
 factorial.grid(row = 0, column = 3, padx = 1, pady = 1)
 factorial_tip = Hovertip(factorial,'This button enters a factorial sign, enter this after a number to get its factorial')
 
-#second row
+##second row
 parenLeft = Button(buttons_frame, text = "(", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_text("("))
 parenLeft.grid(row = 1, column = 0, padx = 1, pady = 1)
 parenLeft_tip = Hovertip(parenLeft,'This button enters an opening parenthesis, use this with a closing parenthesis to specify a negative number')
@@ -257,7 +293,7 @@ divide_tip = Hovertip(divide,'This button enters a division sign, use this to cr
 
 
 
-#third row
+##third row
 seven = Button(buttons_frame, text = "7", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(7))
 seven.grid(row = 2, column = 0, padx = 1, pady = 1)
 seven_tip = Hovertip(seven,'This button enters the digit 7, use this in combination with other digits to create numbers')
@@ -276,7 +312,7 @@ multiply_tip = Hovertip(multiply,'This button enters a multiplication sign, use 
 
 
 
-#fourth row
+##fourth row
 four = Button(buttons_frame, text = "4", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(4))
 four.grid(row = 3, column = 0, padx = 1, pady = 1)
 four = Hovertip(four,'This button enters the digit 4, use this in combination with other digits to create numbers')
@@ -295,7 +331,7 @@ minus_tip = Hovertip(minus,'This button enters a minus sign, use this to create 
 
 
 
-#fifth row
+##fifth row
 one = Button(buttons_frame, text = "1", fg = "white", width = 10, height = 3, bd = 0, bg = "#111317", cursor = "hand2", command= lambda: display_text(1))
 one.grid(row = 4, column = 0, padx = 1, pady = 1)
 one_tip = Hovertip(one,'This button enters the digit 1, use this in combination with other digits to create numbers')
@@ -314,7 +350,7 @@ plus_tip = Hovertip(plus,'This button enters a plus sign, use this to create an 
 
 
 
-#sixth row
+##sixth row
 clear = Button(buttons_frame, text = "CE", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: display_clear());
 clear.grid(row = 5, column = 0, padx = 1, pady = 1)
 clea_tip = Hovertip(clear,'This button clears all entered expressions' )
