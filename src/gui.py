@@ -177,7 +177,7 @@ def key(event):
 
 
 gui.configure(bg="#1A1D23")
-gui.geometry("")  
+gui.geometry("312x413")  
 gui.resizable(0, 0)  
 gui.title("Calculator")
 gui.bind("<Key>",key)
