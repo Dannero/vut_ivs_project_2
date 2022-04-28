@@ -1,9 +1,7 @@
 
-
-
-- We didnt manage to meet all deadlines.
-
-- Every member of the team managed to do portion of work that was assigned to them.
+- Nepodarilo sa nám dodržať stanovené deadliny.
+- Každý člen týmu splnil svoje úlohy.
+- Avšak poradie v ktorom sme mali úlohy robiť nebolo dodržané.
 
 
 
