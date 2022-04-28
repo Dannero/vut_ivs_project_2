@@ -11,6 +11,8 @@ pack: doc
 	mkdir -p ../../xsirov01_xbrand13_xhrici01_xblask05/installer
 	mv ../doc ../../xsirov01_xbrand13_xhrici01_xblask05/
 	cp -a ../. ../../xsirov01_xbrand13_xhrici01_xblask05/repo
+	cp -r ../../xsirov01_xbrand13_xhrici01_xblask05/repo/installer/.  ../../xsirov01_xbrand13_xhrici01_xblask05/installer/
+	rm -rf ../../xsirov01_xbrand13_xhrici01_xblask05/repo/installer
 	cd ../../ && zip -r xsirov01_xbrand13_xhrici01_xblask05.zip xsirov01_xbrand13_xhrici01_xblask05
 
 clean:
