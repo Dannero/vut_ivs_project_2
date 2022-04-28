@@ -1,4 +1,9 @@
 ##
+# @mainpage xsirov01_ivs Calculator 
+# 
+# @brief IVS Project 2 Calculator Implementation
+
+##
 # @file gui.py  
 # 
 # @brief GUI of the calculator implementing mathematical functions
@@ -28,16 +33,17 @@ def display_clear():
 def display_remove():
     global expression
     global expression_eval
-    if expression_eval[-1] == "r":
-        expression = expression[:-4]
-        expression_eval = expression_eval[:-1] 
-    elif expression_eval[-1] == "l":
-        expression = expression[:-2]
-        expression_eval = expression_eval[:-1]   
-    else:             
-        expression = expression[:-1]
-        expression_eval = expression_eval[:-1]
-    calculator_text.set(expression)
+    if (expression != "" and expression_eval != ""):
+        if expression_eval[-1] == "r":
+            expression = expression[:-4]
+            expression_eval = expression_eval[:-1] 
+        elif expression_eval[-1] == "l":
+            expression = expression[:-2]
+            expression_eval = expression_eval[:-1]   
+        else:             
+            expression = expression[:-1]
+            expression_eval = expression_eval[:-1]
+        calculator_text.set(expression)
 
 ##
 # @brief Display text
@@ -62,27 +68,33 @@ def display_text(item):
 def evaluate():
         global expression_eval
         global expression
+        global character_array
         character_array = []
         number = ""
+
+        
         ##parses expression into array
         for character in range(len(expression_eval)):
             ##checks if character is a number or .
             ##or if first character is - to make nagative number
+            
             if (ord(expression_eval[character]) >= 48 and ord(expression_eval[character]) <= 57) or ord(expression_eval[character]) == ord('.') or (ord(expression_eval[character]) == ord('-') and character == 0):
                 number = number + expression_eval[character]
                 ##evaluates last number at the end of the expression
                 if (character == (len(expression_eval)-1)):
-                    number = float(number)
-                    if (number.is_integer()):
-                        number = int(number)
+                    #quick fix - when '-' or '.' is entered without operand = invalid input
+                    if (number != "." and number != '-' and number.count('-') <= 1):
+                        number = float(number)
+                        if (number.is_integer()):
+                            number = int(number)
                     character_array.append(number)
                     number=""
             ##checks if - is in bracket to make a negative number
-            elif ord(expression_eval[character]) == ord('-') and ord(expression_eval[character-1]) == ord('('):
+            elif (ord(expression_eval[character]) == ord('-') or ord(expression_eval[character]) == ord('+')) and ord(expression_eval[character-1]) == ord('('):
                 number = number + expression_eval[character]
             ##when character is not a number
             elif ((ord(expression_eval[character]) <= 48 or ord(expression_eval[character]) >= 57) and ord(expression_eval[character]) != ord('.') and ord(expression_eval[character]) != ord('(')):
-                if number != "":
+                if number != "" and number != "." and number != '-' and number.count('-') <= 1:
                     ##evaluates and appends number to array
                     number = float(number)
                     if (number.is_integer()):
@@ -94,6 +106,18 @@ def evaluate():
                     number=""
                 else:
                     character_array.append(expression_eval[character])
+        
+        ##Checks for invalid input
+        if (invalidInput() == False):
+            result = "Invalid input"
+            calculator_text.set(result)
+            expression_eval=""
+            character_array = []
+            number = ""
+            expression =""
+            result=0
+            return
+   
             
         ##
         # @brief Operator precedence function
@@ -136,9 +160,9 @@ def evaluate():
             #elif (character_array[i] == "("):
                 #if character_array[i+2] != ")":
                     #todo syntax error
-             #   if(character_array[i+1]=="-"):
-              #      character_array[i] = character_array[i] + character_array[i+1]
-               #     del character_array[i+1]
+            #   if(character_array[i+1]=="-"):
+            #      character_array[i] = character_array[i] + character_array[i+1]
+            #     del character_array[i+1]
 
             elif (character_array[i] == "!"):
                 try:
@@ -196,6 +220,31 @@ def evaluate():
         number = ""
         expression =""
         result=0
+
+##
+# @brief invalidInput
+# Checks if user's input is valid
+#
+def invalidInput()->bool:
+    ##Counts the number of operands
+    numOfOperators = 0
+    for character in range(len(character_array)):
+        if (character_array[character] == '+' or character_array[character] == '-' or character_array[character] == 'r' or character_array[character] == '^' or character_array[character] == '/' or character_array[character] == '*'):
+            numOfOperators += 1
+            ##Checks if operator is without operand
+            if (character == 0 or character == len(character_array)-1):
+                return False
+        if (character_array[character] == "."):
+            return False
+        if (isinstance(character_array[character], int)):
+            numOfOperators = 0
+        ##Checks if there is more than one operand in a row
+        if (numOfOperators > 1):
+            return False
+
+            
+
+
 
         
 ##
