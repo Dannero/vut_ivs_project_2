@@ -1,22 +1,9 @@
 
-PLÁN:
-TERMÍNY:
-17.3. 2022		Plán, repozitár, komunikačný kanál (Discord)
-29.3. 2022 		Testy, základné funkcie, makefile
-9.4.  2022		Ovládanie, GUI 
-16.4. 2022		Dokumentácia, manuál, nápoveda
-20.4. 2022		Inštalátor, odinštalátor
-25.4. 2022		Finálny produkt, ladenie detailov
-6.5.  2022		Inštalácia
-20.5. 2022		Problémy
-23.5. 2022		Verejná prezentácia
 
-REALITA:
-TERMÍNY:
-17.3. 2022		Plán, repozitár, komunikačný kanál (Discord)
-20.4 .2022 		Testy, základné a pokročilé mat. operácie
-20.4. 2022		Ovládanie, GUI 
-23.4. 2022		Nápoveda
-27.4. 2022    Manuál, dokumentácia
-28.4. 2022		Inštalátor, odinštalátor
-28.4. 2022		Finálny produkt, ladenie detailov
+
+- We didnt manage to meet all deadlines.
+
+- Every member of the team managed to do portion of work that was assigned to them.
+
+
+
