@@ -1,4 +1,4 @@
-xlogin01 100 (základ GUI a základní mat. operace)
-xlogin02 100 (pokročilé mat. operace)
-xlogin03 90 (profiling, instalátor)
-xlogin04 110 (testy, dokumentace)
+xsirov01 100 (základ GUI, základní mat. operácie, testy na základní mat. operácie, validacia vstupu)
+xhrici01 100 (pokročilé mat. operace, testy na pokročilé mat. operácie, makefile, dokumentácia, nápoveda)
+xblask05 100 (profiling, mockup, prioritizácia výrazov, github repozitár, logo, dokumentácia)
+xbrand13 110 (inštalátor, manuál, správa komunikačných kanálov, dokumentácia )
