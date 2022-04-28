@@ -17,6 +17,6 @@ TERMÍNY:
 20.4 .2022 		Testy, základné a pokročilé mat. operácie
 20.4. 2022		Ovládanie, GUI 
 23.4. 2022		Nápoveda
-27.4. 2022    Manuál, dokumentácia
+27.4. 2022      Manuál, dokumentácia
 28.4. 2022		Inštalátor, odinštalátor
 28.4. 2022		Finálny produkt, ladenie detailov
