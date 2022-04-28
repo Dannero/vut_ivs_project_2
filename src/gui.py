@@ -222,9 +222,9 @@ def evaluate():
         result=0
 
 ##
-# @brief invalidInput
-# Checks if user's input is valid
+# @brief Invalid Input
 #
+# Checks if user's input is valid
 def invalidInput()->bool:
     ##Counts the number of operands
     numOfOperators = 0
