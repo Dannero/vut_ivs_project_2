@@ -1,4 +1,4 @@
 xsirov01 100 (základ GUI, základní mat. operácie, testy na základní mat. operácie, validacia vstupu)
-xhrici01 100 (pokročilé mat. operace, testy na pokročilé mat. operácie, makefile, dokumentácia, nápoveda)
+xhrici01 100 (pokročilé mat. operace, testy na pokročilé mat. operácie, makefile, dokumentácia, nápoveda, opravy a drobnosti)
 xblask05 100 (profiling, mockup, prioritizácia výrazov, github repozitár, logo, dokumentácia)
 xbrand13 100 (inštalátor, odinštalátor, manuál, správa komunikačných kanálov, dokumentácia )
