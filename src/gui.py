@@ -1,9 +1,4 @@
 ##
-# @mainpage xsirov01_ivs Calculator 
-# 
-# @brief IVS Project 2 Calculator Implementation
-
-##
 # @file gui.py  
 # 
 # @brief GUI of the calculator implementing mathematical functions
@@ -374,7 +369,7 @@ point = Button(buttons_frame, text = ".", fg = "white", width = 10, height = 3, 
 point.grid(row = 5, column = 2, padx = 1, pady = 1) 
 point_tip = Hovertip(point,'This button enters a floating point, use this in combination with digits to create floating point numbers')
 
-equals = Button(buttons_frame, text = "=", fg = "white", width = 10, height = 3, bd = 0, bg = "#5D70FD", cursor = "hand2", command= lambda: evaluate())
+equals = Button(buttons_frame, text = "=", fg = "white", width = 10, height = 3, bd = 0, bg = "#00AAAA", cursor = "hand2", command= lambda: evaluate())
 equals.grid(row = 5, column = 3, padx = 1, pady = 1)
 equals_tip = Hovertip(equals,'This button evaluates your expression')
 
