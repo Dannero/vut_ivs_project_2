@@ -1,8 +1,73 @@
-Tento soubor bude obsahovat:
+xsirov01_ivs
 
--- stanovené termíny,
--- přidělení úkolů na projektu jednotlivým řešitelům,
--- zvolené komunikační kanály pro komunikaci v týmu a stanovená pravidla pro komunikaci (jsou-li nějaká),
--- zvolený systém pro správu verzí a hosting + informaci, jak do repozitáře mohou nahlédnout vyučující/cvičící (viz níže).
+VEDÚCI TÍMU:
+Lucia Šírová (xsirov01)       
 
-Alternativně lze odevzdat archiv xlogin01_xlogin02_xlogin03_xlogin04_plan.zip, který bude obsahovat libovolný počet souborů xlogin01_xlogin02_xlogin03_xlogin04_plan* ("*" zastupuje libovolný počet libovolných znaků, tedy např. ".mpp" či "01.jpg"), přičemž plán zde může být vytvořený v MS Projectu či jiném programu (není-li daný program ve škole dostupný, je nutno odevzdat i exportovanou verzi v PDF či jpg).
+
+OSTATNÍ ČLENOVIA TÍMU:
+David Brandšteter (xbrand13)
+Stanislav Hricík (xhrici01)
+Daniel Blaško (xblask05)
+
+VÝVOJOVÉ PROSTREDIE:
+Visual Studio Code
+
+KOMUNIKAČNÝ KANÁL:
+Discord
+->Vytvorili sme viacero kanálov v ktorých sa budú podľa potreby vytvárať vlákna
+->Komunikácia musí byť relevantná s projektom a danou témou
+
+SYSTÉM PRE SPRÁVU VERZIÍ
+Git
+
+HOSTING
+https://github.com/Dannero/ivs_project_2.git
+->Boli pridelené oprávnenia pre uživatela ivskontrola
+
+
+
+TERMÍNY:
+17.3. 2022		Plán, repozitár, komunikačný kanál (Discord)
+29.3. 2022 		Testy, základné funkcie, makefile
+9.4.  2022		Ovládanie, GUI 
+16.4. 2022		Dokumentácia, manuál, nápoveda
+20.4. 2022		Inštalátor, odinštalátor
+25.4. 2022		Finálny produkt, ladenie detailov
+6.5.  2022		Inštalácia
+20.5. 2022		Problémy
+23.5. 2022		Verejná prezentácia
+
+
+ROZDELENIE ÚLOH:
+
+xsirov01:
+-Vytvorenie testov
+-Vzhľad kalkulačky a GUI
+-Základné aritmetické operácie
+
+
+
+xbrand13:
+-Kontrola práce a dodržovania termínov
+-Vytvorenie inštalátora a odinštalátora
+-Vytvorenie algoritmu pre vyhľadávanie zátvoriek
+-Manuál
+-Správa komunikačných kanálov
+
+
+xhrici01:
+-Vytvorenie Makefile súboru
+-Vytvorenie povinných doplnkových funkcií
+-Nápoveda
+
+
+
+xblask05:
+-Vytvorenie git repozitára 
+-Kontrola dokumentácie
+-Profiling
+-Vytvorenie algoritmu pre prioritu výrazov
+
+
+Spoločná práca:
+-Tvorba prezentácie
