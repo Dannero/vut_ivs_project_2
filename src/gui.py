@@ -117,8 +117,8 @@ def evaluate():
             if (character_array[i] == "^"):
                 try:
                     character_array[i-1] = math_functions.power(character_array[i-1], character_array[i+1])
-                except Exception as e:
-                    result = e
+                except Exception:
+                    result = "Only natural number exponents are allowed"
                 del character_array[i+1]
                 del character_array[i]
 
@@ -157,7 +157,10 @@ def evaluate():
         i = 0
         while i < len(character_array):
             if (character_array[i] == "*"):
-                character_array[i-1] = math_functions.multiply(character_array[i-1], character_array[i+1])
+                try:
+                    character_array[i-1] = math_functions.multiply(character_array[i-1], character_array[i+1])
+                except:
+                    result = "Incorrect multiplication expression"
                 del character_array[i+1]
                 del character_array[i]
 
