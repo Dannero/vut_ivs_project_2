@@ -118,7 +118,7 @@ def evaluate():
                 try:
                     character_array[i-1] = math_functions.power(character_array[i-1], character_array[i+1])
                 except Exception:
-                    result = "Only natural number exponents are allowed"
+                    result = "Exponents have to be N"
                 del character_array[i+1]
                 del character_array[i]
 
@@ -126,7 +126,7 @@ def evaluate():
                 try:
                     character_array[i-1] = math_functions.root(character_array[i-1], character_array[i+1])
                 except Exception:
-                    result = "Complex results aren't supported"
+                    result = "Complex results unsupported"
                 del character_array[i+1]
                 del character_array[i]
 
@@ -136,7 +136,7 @@ def evaluate():
                     del character_array[i+1]
                 except Exception:
                     del character_array[i]
-                    result = "ln is undefined for values below or equal 0"
+                    result = "Out of ln domain"
                 #del character_array[i+2]
             #elif (character_array[i] == "("):
                 #if character_array[i+2] != ")":
@@ -149,7 +149,7 @@ def evaluate():
                 try:
                     character_array[i-1] = math_functions.factorial(character_array[i-1])
                 except Exception:
-                    result = "Factorial is undefined for negative and floating numbers"
+                    result = "Factorial is only defined for N"
                 del character_array[i]
             else: i+=1
 
@@ -160,7 +160,7 @@ def evaluate():
                 try:
                     character_array[i-1] = math_functions.multiply(character_array[i-1], character_array[i+1])
                 except:
-                    result = "Incorrect multiplication expression"
+                    result = "Incorrect multiplication"
                 del character_array[i+1]
                 del character_array[i]
 
